@@ -1,46 +1,73 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+@theme {
+  /* --- RENK PALETİ (Luxury Theme) --- */
+  --color-gold-400: #e5c558;
+  --color-gold-500: #d4af37; /* Klasik Altın */
+  --color-gold-600: #aa8c2c;
+
+  --color-navy-800: #0a192f; /* Asil Lacivert */
+  --color-navy-900: #050d18; /* Derin Gece */
+
+  --color-marble: #f9f9f9;
+
+  /* --- FONTLAR --- */
+  /* Layout.tsx'ten gelen değişkenleri buraya bağlıyoruz */
+  --font-serif: var(--font-playfair), serif;
+  --font-sans: var(--font-inter), sans-serif;
+
+  /* --- GRADIENTLER --- */
+  --background-image-luxury-gradient: linear-gradient(
+    to right bottom,
+    #0a192f,
+    #050d18
+  );
+  --background-image-gold-gradient: linear-gradient(
+    135deg,
+    #d4af37 0%,
+    #e5c558 50%,
+    #aa8c2c 100%
+  );
+}
+
+/* --- ÖZEL AYARLAR --- */
 :root {
   --foreground-rgb: 10, 25, 47;
-  --background-start-rgb: 248, 249, 250;
-  --background-end-rgb: 255, 255, 255;
 }
 
 body {
-  color: #0a192f;
-  background: #f8f9fa;
-  -webkit-font-smoothing: antialiased; /* Fontların pürüzsüz görünmesini sağlar */
+  color: var(--color-navy-800);
+  background: var(--color-marble);
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Başlıklar için Playfair fontu */
+/* Başlıkların Hepsine Serif Fontu Ata */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-serif);
 }
 
-/* LÜKS SCROLLBAR (Tarayıcı çubuğunu özelleştirir) */
+/* LÜKS SCROLLBAR */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a192f;
+  background: var(--color-navy-900);
 }
 ::-webkit-scrollbar-thumb {
   background: #555;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4af37; /* Üzerine gelince Altın rengi olur */
+  background: var(--color-gold-500);
 }
 
-/* Altın Rengi Metin Efekti */
+/* ALTIN YAZI EFEKTİ */
 .text-gradient-gold {
   background: linear-gradient(135deg, #d4af37, #ffe585, #aa8c2c);
   -webkit-background-clip: text;
