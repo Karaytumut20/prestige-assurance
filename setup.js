@@ -1,138 +1,125 @@
+/**
+ * PRESTIGE ASSURANCE - FIX CLAIMS BUTTONS
+ * Amaç: Claims (Hasar) sayfasındaki form ve giriş butonlarını
+ * doğrudan telefon aramasına (+1 628 999 5230) yönlendirmek.
+ */
+
 const fs = require("fs");
 const path = require("path");
 
-console.log(">>> Navbar görünürlük sorunu tüm sayfalar için çözülüyor...");
+const PHONE_HREF = "tel:+16289995230";
+const PHONE_DISPLAY = "+1 (628) 999-5230";
+
+console.log(">>> Claims sayfası butonları telefon aramasına bağlanıyor...");
 
 function writeFile(filePath, content) {
   const dir = path.dirname(filePath);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(filePath, content.trim());
-  console.log(`✔ Navbar Güncellendi: ${filePath}`);
+  console.log(`✔ Güncellendi: ${filePath}`);
 }
 
-// Akıllı Navbar Bileşeni (Sayfaya Göre Renk Değiştiren)
-const smartNavbar = `
+// GÜNCELLENMİŞ CLAIMS SAYFASI
+const claimsPage = `
 'use client';
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation'; // Sayfa kontrolü için eklendi
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, PhoneCall, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Phone, FileText, Activity, ShieldAlert } from 'lucide-react';
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // Mevcut sayfa yolu
-
-  // Hangi sayfalarda Navbar şeffaf (transparent) başlamalı?
-  // Ana sayfa ('/'), Commercial ve Claims sayfalarının tepesinde koyu renk Hero var, bu yüzden şeffaf olabilir.
-  const transparentHeroPages = ['/', '/commercial', '/claims', '/specialty'];
-
-  // Eğer mevcut sayfa bu listede YOKSA (örn: Private Wealth), Navbar direkt koyu olsun.
-  const isTransparent = transparentHeroPages.includes(pathname);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Mobil menü açıldığında scroll'u kilitle
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [isOpen]);
-
-  const navLinks = [
-    { name: 'Private Wealth', href: '/private-wealth' },
-    { name: 'Commercial', href: '/commercial' },
-    { name: 'Specialty', href: '/specialty' },
-    { name: 'Claims Center', href: '/claims' }
-  ];
-
+export default function Page() {
   return (
-    <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={\`fixed w-full z-50 transition-all duration-500 \${
-          // Mantık: Scroll yapıldıysa VEYA şeffaf olmaması gereken bir sayfadaysak (Private Wealth gibi) -> Koyu Arka Plan
-          (scrolled || !isTransparent) && !isOpen
-            ? 'bg-navy-900/98 backdrop-blur-md py-3 shadow-2xl border-b border-white/5'
-            : 'bg-transparent py-6'
-        }\`}
-      >
-        <div className="container mx-auto px-6 flex justify-between items-center text-white relative z-50">
-          <Link href="/" className="flex flex-col group cursor-pointer">
-            <span className="text-2xl font-serif font-bold tracking-[0.3em] group-hover:text-gold-400 transition-colors">PRESTIGE</span>
-            <span className="text-[10px] tracking-[0.5em] text-gold-500 uppercase">Assurance Group</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-8 items-center font-medium tracking-widest text-[11px] uppercase">
-            {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="hover:text-gold-500 transition-colors duration-300 relative group">
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
-              </Link>
-            ))}
-            <div className="h-6 w-px bg-white/20 mx-2" />
-            <button className="flex items-center gap-2 bg-gold-500 text-navy-900 px-6 py-2.5 hover:bg-white transition-all duration-300 font-bold text-xs tracking-wider">
-              <PhoneCall size={14} />
-              Contact Agent
-            </button>
+    <main className="min-h-screen bg-[#FDFDFD]">
+      {/* Functional Hero */}
+      <section className="bg-navy-900 text-white pt-40 pb-20">
+        <div className="container mx-auto px-6 text-center">
+          <div className="inline-flex items-center gap-2 bg-gold-500/10 text-gold-500 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider mb-6 border border-gold-500/20">
+            <ShieldAlert size={14} />
+            Concierge Support Center
           </div>
+          <h1 className="text-4xl md:text-6xl font-serif mb-6">How can we assist you?</h1>
+          <p className="text-gray-400 max-w-xl mx-auto">
+            Our claims team operates 24/7/365 to ensure your assets are restored with minimal disruption to your lifestyle.
+          </p>
+        </div>
+      </section>
 
-          {/* Mobile Toggle */}
-          <div className="lg:hidden text-gold-500 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X size={30} /> : <Menu size={30} />}
+      {/* Action Cards (Merkezde) */}
+      <section className="container mx-auto px-6 -mt-10 relative z-10">
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* Card 1: EMERGENCY HOTLINE */}
+          <motion.div whileHover={{ y: -5 }} className="bg-white p-8 shadow-lg border-t-4 border-gold-500 text-center">
+            <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
+              <Phone size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-navy-900 mb-2">Emergency Hotline</h3>
+            <p className="text-gray-500 text-sm mb-6">Immediate assistance for urgent losses.</p>
+            <a href="${PHONE_HREF}" className="text-gold-600 font-bold text-lg hover:underline block">
+              ${PHONE_DISPLAY}
+            </a>
+          </motion.div>
+
+          {/* Card 2: FILE A NEW CLAIM (Updated to Call) */}
+          <motion.div whileHover={{ y: -5 }} className="bg-white p-8 shadow-lg border-t-4 border-navy-900 text-center">
+            <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
+              <FileText size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-navy-900 mb-2">File a New Claim</h3>
+            <p className="text-gray-500 text-sm mb-6">Report a new incident directly to an agent.</p>
+            <a
+              href="${PHONE_HREF}"
+              className="w-full bg-navy-900 text-white px-6 py-3 text-sm font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-navy-900 transition-colors flex items-center justify-center gap-2"
+            >
+              <Phone size={16} />
+              Call to Report
+            </a>
+          </motion.div>
+
+          {/* Card 3: TRACK STATUS (Updated to Call) */}
+          <motion.div whileHover={{ y: -5 }} className="bg-white p-8 shadow-lg border-t-4 border-gray-300 text-center">
+            <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
+              <Activity size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-navy-900 mb-2">Track Status</h3>
+            <p className="text-gray-500 text-sm mb-6">Check progress on existing claims.</p>
+            <a
+              href="${PHONE_HREF}"
+              className="w-full border border-gray-300 text-gray-600 px-6 py-3 text-sm font-bold uppercase tracking-widest hover:border-navy-900 hover:text-navy-900 transition-colors flex items-center justify-center gap-2"
+            >
+              <Phone size={16} />
+              Call Support
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Claims Process */}
+      <section className="py-24 container mx-auto px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-serif text-navy-900 mb-12 text-center">The "White Glove" Standard</h2>
+          <div className="space-y-8">
+            {[
+              { step: "01", title: "Immediate Response", desc: "A dedicated Claims Advocate is assigned to you within 30 minutes of notification." },
+              { step: "02", title: "Vendor Concierge", desc: "We coordinate top-tier restoration specialists, temporary housing, or security as needed." },
+              { step: "03", title: "Advocacy & Settlement", desc: "We negotiate directly with carriers to ensure the settlement reflects the true value of your assets." }
+            ].map((item) => (
+              <div key={item.step} className="flex gap-6 items-start border-b border-gray-100 pb-8 last:border-0">
+                <div className="text-4xl font-serif text-gold-500 opacity-30">{item.step}</div>
+                <div>
+                  <h4 className="text-xl font-bold text-navy-900 mb-2">{item.title}</h4>
+                  <p className="text-gray-600">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </motion.nav>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, clipPath: "circle(0% at 100% 0)" }}
-            animate={{ opacity: 1, clipPath: "circle(150% at 100% 0)" }}
-            exit={{ opacity: 0, clipPath: "circle(0% at 100% 0)" }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-navy-900 z-40 lg:hidden px-8 pt-32 flex flex-col space-y-8 h-screen overflow-y-auto"
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-3xl font-serif text-white flex items-center justify-between border-b border-white/10 pb-4 group"
-              >
-                {link.name}
-                <ChevronRight className="text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Link>
-            ))}
-            <button className="w-full bg-gold-500 text-navy-900 py-4 font-bold uppercase tracking-widest mt-8 mb-8">
-              Client Portal Login
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+      </section>
+    </main>
   );
 }
 `;
 
 // Dosyayı Yaz
-writeFile("components/Navbar.tsx", smartNavbar);
+writeFile("app/claims/page.tsx", claimsPage);
 
-console.log("\n>>> NAVBAR DÜZELTİLDİ! <<<");
-console.log(
-  "- Private Wealth sayfasında Navbar artık otomatik olarak KOYU renk olacak.",
-);
-console.log(
-  "- Home, Commercial ve Claims sayfalarında ŞEFFAF kalmaya devam edecek.",
-);
-console.log("Değişiklikleri görmek için sayfayı yenilemeniz yeterli.");
+console.log("\n>>> CLAIMS BUTONLARI GÜNCELLENDİ <<<");
+console.log("- 'File a New Claim' butonu artık 'Call to Report' oldu.");
+console.log("- 'Track Status' butonu artık 'Call Support' oldu.");

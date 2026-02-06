@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Phone, FileText, Activity, ArrowRight, ShieldAlert } from 'lucide-react';
+import { Phone, FileText, Activity, ShieldAlert } from 'lucide-react';
 
 export default function Page() {
   return (
@@ -22,38 +22,48 @@ export default function Page() {
       {/* Action Cards (Merkezde) */}
       <section className="container mx-auto px-6 -mt-10 relative z-10">
         <div className="grid md:grid-cols-3 gap-6">
-          {/* Card 1 */}
+          {/* Card 1: EMERGENCY HOTLINE */}
           <motion.div whileHover={{ y: -5 }} className="bg-white p-8 shadow-lg border-t-4 border-gold-500 text-center">
             <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
               <Phone size={28} />
             </div>
             <h3 className="text-xl font-bold text-navy-900 mb-2">Emergency Hotline</h3>
             <p className="text-gray-500 text-sm mb-6">Immediate assistance for urgent losses.</p>
-            <a href="tel:+18005550199" className="text-gold-600 font-bold text-lg hover:underline">+1 (800) 555-0199</a>
+            <a href="tel:+16289995230" className="text-gold-600 font-bold text-lg hover:underline block">
+              +1 (628) 999-5230
+            </a>
           </motion.div>
 
-          {/* Card 2 */}
+          {/* Card 2: FILE A NEW CLAIM (Updated to Call) */}
           <motion.div whileHover={{ y: -5 }} className="bg-white p-8 shadow-lg border-t-4 border-navy-900 text-center">
             <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
               <FileText size={28} />
             </div>
             <h3 className="text-xl font-bold text-navy-900 mb-2">File a New Claim</h3>
-            <p className="text-gray-500 text-sm mb-6">Start the process digitally.</p>
-            <button className="bg-navy-900 text-white px-6 py-3 text-sm font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-navy-900 transition-colors w-full">
-              Start Form
-            </button>
+            <p className="text-gray-500 text-sm mb-6">Report a new incident directly to an agent.</p>
+            <a
+              href="tel:+16289995230"
+              className="w-full bg-navy-900 text-white px-6 py-3 text-sm font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-navy-900 transition-colors flex items-center justify-center gap-2"
+            >
+              <Phone size={16} />
+              Call to Report
+            </a>
           </motion.div>
 
-          {/* Card 3 */}
+          {/* Card 3: TRACK STATUS (Updated to Call) */}
           <motion.div whileHover={{ y: -5 }} className="bg-white p-8 shadow-lg border-t-4 border-gray-300 text-center">
             <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
               <Activity size={28} />
             </div>
             <h3 className="text-xl font-bold text-navy-900 mb-2">Track Status</h3>
             <p className="text-gray-500 text-sm mb-6">Check progress on existing claims.</p>
-            <button className="border border-gray-300 text-gray-600 px-6 py-3 text-sm font-bold uppercase tracking-widest hover:border-navy-900 hover:text-navy-900 transition-colors w-full">
-              Client Login
-            </button>
+            <a
+              href="tel:+16289995230"
+              className="w-full border border-gray-300 text-gray-600 px-6 py-3 text-sm font-bold uppercase tracking-widest hover:border-navy-900 hover:text-navy-900 transition-colors flex items-center justify-center gap-2"
+            >
+              <Phone size={16} />
+              Call Support
+            </a>
           </motion.div>
         </div>
       </section>

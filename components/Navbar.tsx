@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation'; // Sayfa kontrolü için eklendi
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, PhoneCall, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
@@ -8,13 +8,9 @@ import Link from 'next/link';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // Mevcut sayfa yolu
+  const pathname = usePathname();
 
-  // Hangi sayfalarda Navbar şeffaf (transparent) başlamalı?
-  // Ana sayfa ('/'), Commercial ve Claims sayfalarının tepesinde koyu renk Hero var, bu yüzden şeffaf olabilir.
-  const transparentHeroPages = ['/', '/commercial', '/claims', '/specialty'];
-
-  // Eğer mevcut sayfa bu listede YOKSA (örn: Private Wealth), Navbar direkt koyu olsun.
+  const transparentHeroPages = ['/', '/vehicles', '/health'];
   const isTransparent = transparentHeroPages.includes(pathname);
 
   useEffect(() => {
@@ -23,19 +19,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Mobil menü açıldığında scroll'u kilitle
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    if (isOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
   }, [isOpen]);
 
   const navLinks = [
-    { name: 'Private Wealth', href: '/private-wealth' },
-    { name: 'Commercial', href: '/commercial' },
-    { name: 'Specialty', href: '/specialty' },
+    { name: 'Auto & Trucking', href: '/vehicles' },
+    { name: 'Health & Life', href: '/health' },
     { name: 'Claims Center', href: '/claims' }
   ];
 
@@ -45,7 +36,6 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed w-full z-50 transition-all duration-500 ${
-          // Mantık: Scroll yapıldıysa VEYA şeffaf olmaması gereken bir sayfadaysak (Private Wealth gibi) -> Koyu Arka Plan
           (scrolled || !isTransparent) && !isOpen
             ? 'bg-navy-900/98 backdrop-blur-md py-3 shadow-2xl border-b border-white/5'
             : 'bg-transparent py-6'
@@ -66,10 +56,15 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="h-6 w-px bg-white/20 mx-2" />
-            <button className="flex items-center gap-2 bg-gold-500 text-navy-900 px-6 py-2.5 hover:bg-white transition-all duration-300 font-bold text-xs tracking-wider">
+
+            {/* PHONE BUTTON - Direkt Arama */}
+            <a
+              href="tel:+16289995230"
+              className="flex items-center gap-2 bg-gold-500 text-navy-900 px-5 py-2.5 hover:bg-white transition-all duration-300 font-bold text-xs tracking-wider rounded-sm"
+            >
               <PhoneCall size={14} />
-              Contact Agent
-            </button>
+              +1 (628) 999-5230
+            </a>
           </div>
 
           {/* Mobile Toggle */}
@@ -79,7 +74,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -87,22 +82,23 @@ export default function Navbar() {
             animate={{ opacity: 1, clipPath: "circle(150% at 100% 0)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at 100% 0)" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-navy-900 z-40 lg:hidden px-8 pt-32 flex flex-col space-y-8 h-screen overflow-y-auto"
+            className="fixed inset-0 bg-navy-900 z-40 lg:hidden px-8 pt-32 flex flex-col space-y-6 h-screen overflow-y-auto"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-3xl font-serif text-white flex items-center justify-between border-b border-white/10 pb-4 group"
+                className="text-2xl font-serif text-white flex items-center justify-between border-b border-white/10 pb-4 group"
               >
                 {link.name}
                 <ChevronRight className="text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
             ))}
-            <button className="w-full bg-gold-500 text-navy-900 py-4 font-bold uppercase tracking-widest mt-8 mb-8">
-              Client Portal Login
-            </button>
+            <a href="tel:+16289995230" className="w-full bg-gold-500 text-navy-900 py-4 font-bold uppercase tracking-widest mt-4 flex justify-center items-center gap-2">
+              <PhoneCall size={18} />
+              Call Now
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

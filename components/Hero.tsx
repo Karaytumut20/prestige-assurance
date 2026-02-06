@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import { ShieldCheck, ChevronRight } from 'lucide-react';
+import { ShieldCheck, ChevronRight, Phone } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -50,12 +50,22 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col md:flex-row gap-5 justify-center"
         >
-          <button className="bg-gold-500 text-navy-900 px-10 py-4 text-sm font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300">
+          {/* BUTTON 1: DIRECT CALL */}
+          <a
+            href="tel:+16289995230"
+            className="bg-gold-500 text-navy-900 px-10 py-4 text-sm font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            <Phone size={18} />
             Request Consultation
-          </button>
-          <button className="border border-white/20 text-white px-10 py-4 text-sm font-bold uppercase tracking-widest hover:bg-white/10 hover:border-white/40 transition-all duration-300 flex items-center justify-center gap-2">
+          </a>
+
+          {/* BUTTON 2: SCROLL TO SERVICES */}
+          <a
+            href="#services"
+            className="border border-white/20 text-white px-10 py-4 text-sm font-bold uppercase tracking-widest hover:bg-white/10 hover:border-white/40 transition-all duration-300 flex items-center justify-center gap-2"
+          >
             Explore Services <ChevronRight size={16} />
-          </button>
+          </a>
         </motion.div>
       </div>
     </div>
