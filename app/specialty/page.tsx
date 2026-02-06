@@ -1,17 +1,3 @@
-const fs = require("fs");
-const path = require("path");
-
-console.log(">>> Sayfa içerikleri lüks ve SEO odaklı olarak güncelleniyor...");
-
-function writeFile(filePath, content) {
-  const dir = path.dirname(filePath);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(filePath, content.trim());
-  console.log(`✔ İçerik Güncellendi: ${filePath}`);
-}
-
-// Ortak Section Bileşeni Şablonu (SEO Destekli)
-const generatePageContent = (title, subtitle, description, features) => `
 import Navbar from '@/components/Navbar';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ShieldCheck, Globe, Clock } from 'lucide-react';
@@ -35,10 +21,10 @@ export default function Page() {
             initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
             className="text-5xl md:text-7xl font-serif mb-6 leading-tight"
           >
-            ${title}
+            Aviation & <br/> Marine Specialty
           </motion.h1>
           <p className="text-xl text-gray-300 max-w-2xl font-light leading-relaxed">
-            ${subtitle}
+            Global hull and liability protection for your most valuable mobility assets.
           </p>
         </div>
       </section>
@@ -51,21 +37,38 @@ export default function Page() {
               Bespoke Risk Management Solutions
             </h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              ${description}
+              Whether you are navigating international waters or soaring through the skies, our specialty experts provide ironclad protection for superyachts and private aircraft.
             </p>
             <div className="space-y-4">
-              ${features
-                .map(
-                  (f) => `
+              
                 <div className="flex items-center gap-4 group">
                   <div className="text-gold-500 group-hover:scale-110 transition-transform">
                     <CheckCircle2 size={24} />
                   </div>
-                  <span className="text-navy-900 font-medium tracking-wide">${f}</span>
+                  <span className="text-navy-900 font-medium tracking-wide">Hull & Machinery Coverage</span>
                 </div>
-              `,
-                )
-                .join("")}
+              
+                <div className="flex items-center gap-4 group">
+                  <div className="text-gold-500 group-hover:scale-110 transition-transform">
+                    <CheckCircle2 size={24} />
+                  </div>
+                  <span className="text-navy-900 font-medium tracking-wide">Crew Medical & Liability</span>
+                </div>
+              
+                <div className="flex items-center gap-4 group">
+                  <div className="text-gold-500 group-hover:scale-110 transition-transform">
+                    <CheckCircle2 size={24} />
+                  </div>
+                  <span className="text-navy-900 font-medium tracking-wide">Charter Operations Insurance</span>
+                </div>
+              
+                <div className="flex items-center gap-4 group">
+                  <div className="text-gold-500 group-hover:scale-110 transition-transform">
+                    <CheckCircle2 size={24} />
+                  </div>
+                  <span className="text-navy-900 font-medium tracking-wide">Private Jet Liability</span>
+                </div>
+              
             </div>
           </div>
           <div className="bg-navy-900 p-12 shadow-2xl relative">
@@ -103,76 +106,3 @@ export default function Page() {
     </main>
   );
 }
-`;
-
-// Sayfa Verileri
-const pages = [
-  {
-    path: "app/private-wealth/page.tsx",
-    title: "Private Wealth <br/> Protection",
-    subtitle:
-      "Sophisticated coverage for high-net-worth individuals, family offices, and complex estates.",
-    description:
-      "Our Private Wealth division understands that standard insurance products often fall short for the discerning client. We provide specialized protection for high-value properties, jewelry collections, and international travel liability.",
-    features: [
-      "Family Office Liability",
-      "Kidnap & Ransom Protection",
-      "High-Limit Umbrella Liability",
-      "Cyber Defense for Individuals",
-    ],
-  },
-  {
-    path: "app/commercial/page.tsx",
-    title: "Commercial <br/> Risk Management",
-    subtitle:
-      "Strategic insurance solutions for industry leaders and growing enterprises.",
-    description:
-      "In the complex landscape of U.S. business, Prestige Assurance Group acts as more than an agency; we are your risk consultants. From D&O liability to complex worker's compensation strategies.",
-    features: [
-      "Directors & Officers (D&O)",
-      "Professional Indemnity",
-      "Cyber Risk Insurance",
-      "Global Supply Chain Protection",
-    ],
-  },
-  {
-    path: "app/specialty/page.tsx",
-    title: "Aviation & <br/> Marine Specialty",
-    subtitle:
-      "Global hull and liability protection for your most valuable mobility assets.",
-    description:
-      "Whether you are navigating international waters or soaring through the skies, our specialty experts provide ironclad protection for superyachts and private aircraft.",
-    features: [
-      "Hull & Machinery Coverage",
-      "Crew Medical & Liability",
-      "Charter Operations Insurance",
-      "Private Jet Liability",
-    ],
-  },
-  {
-    path: "app/claims/page.tsx",
-    title: "Expedited <br/> Claims Center",
-    subtitle:
-      "A concierge approach to claims processing when every second matters.",
-    description:
-      "We redefine the claims experience with our 'White Glove' service. Our team manages the entire process on your behalf, ensuring maximum recovery and minimal disruption to your lifestyle.",
-    features: [
-      "24/7 Dedicated Claims Advocate",
-      "Direct Adjuster Access",
-      "Rental & Replacement Concierge",
-      "Rapid Settlement Protocol",
-    ],
-  },
-];
-
-// Uygula
-pages.forEach((p) =>
-  writeFile(
-    p.path,
-    generatePageContent(p.title, p.subtitle, p.description, p.features),
-  ),
-);
-
-console.log(
-  "\n>>> Sayfalar zengin içerik ve SEO kelimeleriyle güncellendi! <<<",
-);
