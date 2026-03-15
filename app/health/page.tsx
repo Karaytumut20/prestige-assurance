@@ -1,8 +1,18 @@
-'use client';
 
 import { Heart, Activity, Users, Phone, DollarSign } from 'lucide-react';
 import Image from 'next/image';
 import FAQ from '@/components/FAQ';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Affordable US Health Insurance & Private PPO Plans | Portonova",
+  description: "Stop overpaying for US health coverage. Portonova compares nationwide private PPO plans to secure cost-effective healthcare for individuals and families.",
+  keywords: ["US Health Insurance", "Private PPO Plans", "Low-Cost Health Coverage", "Nationwide Medical Insurance", "Portonova Health"],
+  openGraph: {
+    title: "Affordable Private Health Coverage USA",
+    description: "Compare nationwide private PPO plans and reduce your health insurance premiums.",
+  }
+};
 
 const healthFaqs = [
   { question: "Are these plans affordable for families?", answer: "Yes. We compare hundreds of plans to find the one with the lowest premium and deductible combination for your budget." },
@@ -32,7 +42,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <section className="relative pt-44 pb-20 bg-navy-900 text-white overflow-hidden">
-        <Image src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=2000" fill alt="Health Care Background" className="object-cover opacity-20" priority />
+        <Image src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=2000" fill alt="Health Care Background" className="object-cover opacity-20" priority fetchPriority="high" sizes="(max-width: 768px) 100vw, 100vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/80 to-transparent" />
 
         <div className="container mx-auto px-6 text-center relative z-10">

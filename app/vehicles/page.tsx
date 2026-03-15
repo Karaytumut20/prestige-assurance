@@ -1,9 +1,14 @@
-'use client';
-
 import { Car, Truck, Phone, TrendingDown, CheckCircle2, FileBarChart } from 'lucide-react';
 import Image from 'next/image';
 import FAQ from '@/components/FAQ';
 import CarrierLogos from '@/components/CarrierLogos';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "US Commercial Fleet & Luxury Auto Insurance | Portonova",
+  description: "Portonova reduces operational insurance costs for American trucking fleets by up to 30%, while offering 'Agreed Value' policies for US domestic luxury vehicle owners.",
+  keywords: ["US Commercial Fleet Insurance", "Luxury Auto Insurance USA", "Trucking Fleet Protection", "Portonova Auto"],
+};
 
 const truckingFaqs = [
   { question: "How can you offer lower rates than my current broker?", answer: "We specialize in high-volume commercial accounts. Carriers give us preferential rates because of the volume of safe drivers we bring them." },
@@ -34,7 +39,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <section className="relative pt-44 pb-20 bg-navy-900 text-white overflow-hidden">
-        <Image src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2000" fill alt="Commercial Fleet Background" className="object-cover opacity-20" priority />
+        <Image src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2000" fill alt="Commercial Fleet Background" className="object-cover opacity-20" priority fetchPriority="high" sizes="(max-width: 768px) 100vw, 100vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/80 to-transparent" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <span className="text-gold-500 tracking-[0.3em] text-xs font-bold uppercase mb-4 block">

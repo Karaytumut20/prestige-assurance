@@ -1,6 +1,11 @@
-'use client';
-
 import { Phone, FileText, Activity, ShieldAlert } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Nationwide US Insurance Claims Support | Portonova",
+  description: "Portonova's 24/7 dedicated American claims team ensures your high-value assets and fleets are restored swiftly across all 50 US states.",
+  keywords: ["US Insurance Claims", "Auto Insurance Claims USA", "Commercial Trucking Claims", "Portonova Claims Center"],
+};
 
 export default function Page() {
   return (

@@ -33,8 +33,6 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
         className={`fixed w-full z-50 transition-all duration-500 ${(scrolled || !isTransparent) && !isOpen
             ? 'bg-navy-900/98 backdrop-blur-md py-3 shadow-2xl border-b border-white/5'
             : 'bg-transparent py-6'

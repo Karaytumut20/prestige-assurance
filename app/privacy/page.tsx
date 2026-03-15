@@ -1,4 +1,11 @@
 import React from 'react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "US Digital Privacy & Data Protection Policy | Portonova",
+  description: "Portonova respects the privacy of American clients. Read our US data standards regarding the collection, protection, and usage of your digital project demographics.",
+  keywords: ["US Digital Privacy Policy", "American Data Protection", "Portonova Privacy", "TCPA Data Security"],
+};
 
 export default function PrivacyPolicyPage() {
     return (

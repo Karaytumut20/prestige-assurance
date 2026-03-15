@@ -1,4 +1,11 @@
 import React from 'react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "US Digital Operations Terms of Use | Portonova",
+  description: "Review Portonova's corporate Terms of Use governed by US business regulations, outlining our digital agency scope of services for American consulting clients.",
+  keywords: ["US Business Terms", "Digital Agency Terms of Use", "American Consulting Agreement", "Portonova Platform Terms"],
+};
 
 export default function TermsOfUsePage() {
     return (

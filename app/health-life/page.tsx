@@ -1,7 +1,17 @@
-'use client';
 
 import { Heart, Activity, Users, Stethoscope } from 'lucide-react';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "US Health & Life PPO Solutions | Portonova Legacy Programs",
+  description: "Secure premier nationwide US health network access and high-limit legacy life insurance policies tailored for high-net-worth individuals.",
+  keywords: ["US Life Insurance", "High Net Worth Life Insurance", "Concierge Medicine USA", "American Term Life", "Group Health Benefits"],
+  openGraph: {
+    title: "US Health & Life PPO Solutions",
+    description: "High-limit legacy and wellness policies for American enterprises and families.",
+  }
+};
 
 export default function Page() {
   return (
@@ -24,7 +34,7 @@ export default function Page() {
           </div>
           <div className="relative h-[500px] bg-gray-100 rounded-lg overflow-hidden">
             {/* Placeholder for a lifestyle image */}
-            <Image src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000" fill alt="Health & Life Lifestyle" className="object-cover" priority sizes="(max-width: 1024px) 100vw, 50vw" />
+            <Image src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000" fill alt="Health & Life Lifestyle" className="object-cover" priority fetchPriority="high" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
           </div>
         </div>
       </section>

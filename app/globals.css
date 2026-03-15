@@ -37,6 +37,7 @@
 
 html, body {
   background-color: var(--color-navy-950, #020617); /* Fallback to a very dark navy/slate to match footer */
+  overscroll-behavior: none;
 }
 
 body {
