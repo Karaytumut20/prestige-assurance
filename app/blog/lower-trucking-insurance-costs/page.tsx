@@ -2,10 +2,30 @@ import type { Metadata } from 'next';
 import { Truck, Phone, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
+import { siteConfig } from '@/lib/site';
+
 export const metadata: Metadata = {
-  title: "5 Ways to Lower Commercial Trucking Insurance Costs | Prestige",
-  description: "Learn how to reduce fleet insurance premiums using telematics, safety programs, and proper filings. Expert advice for US trucking companies.",
-  keywords: ["Lower Trucking Insurance", "Fleet Insurance Savings", "Commercial Trucking Cost", "Telematics Insurance Discount"],
+  title: "5 Ways to Lower Commercial Trucking Insurance Costs | Portonova USA",
+  description: "Learn how to reduce American fleet insurance premiums using telematics, safety programs, and DOT filings. Expert advice for US trucking companies.",
+  keywords: ["Lower Trucking Insurance US", "US Fleet Insurance Savings", "American Commercial Trucking Cost", "Telematics Insurance Discount USA", "DOT Compliant Fleet Savings"],
+  alternates: {
+    canonical: `${siteConfig.url}/blog/lower-trucking-insurance-costs`,
+  },
+  openGraph: {
+    title: "5 Ways to Lower US Commercial Trucking Costs",
+    description: "Expert guide to reducing fleet insurance operating costs across all 50 states.",
+    url: `${siteConfig.url}/blog/lower-trucking-insurance-costs`,
+    siteName: siteConfig.name,
+    locale: "en_US",
+    type: "article",
+    publishedTime: "2024-03-01T00:00:00.000Z",
+    authors: ["Portonova Fleet Specialists"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lower US Trucking Insurance Rates",
+    description: "5 Proven methods for American owner-operators to save thousands.",
+  },
 };
 
 export default function Page() {

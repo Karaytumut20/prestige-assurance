@@ -2,10 +2,6 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 
-// Not: Client component olduğu için Metadata'yı layout üzerinden veya manuel vermemiz gerekirdi.
-// Ancak Next.js'de en temiz yol, bu sayfa için özel bir layout veya statik metadata export etmektir.
-// Aşağıdaki çözüm, Next.js App Router uyumluluğu için sayfa yapısını korur.
-
 export default function Page() {
   const PHONE_DISPLAY = "+1 (628) 999-5230";
   const PHONE_HREF = "tel:+16289995230";
@@ -15,8 +11,8 @@ export default function Page() {
       <Navbar />
       <section className="pt-44 pb-20 bg-navy-900 text-white">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-5xl font-serif mb-6">Contact Prestige</h1>
-          <p className="text-gray-400">We are available 24/7 for our clients.</p>
+          <h1 className="text-5xl font-serif mb-6">Contact Portonova USA Headquarters</h1>
+          <p className="text-gray-400">Our American-based teams are available 24/7 for our corporate clients.</p>
         </div>
       </section>
 
@@ -29,7 +25,7 @@ export default function Page() {
               <div className="flex items-start gap-4">
                 <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><Phone size={24} /></div>
                 <div>
-                  <h4 className="font-bold text-navy-900">Phone Support</h4>
+                  <h3 className="font-bold text-navy-900">National Phone Support</h3>
                   <p className="text-gray-500 text-sm mb-1">Direct line to agents.</p>
                   <a href={PHONE_HREF} className="text-lg font-serif text-navy-900 hover:text-gold-600">{PHONE_DISPLAY}</a>
                 </div>
@@ -45,7 +41,7 @@ export default function Page() {
               <div className="flex items-start gap-4">
                 <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><MapPin size={24} /></div>
                 <div>
-                  <h4 className="font-bold text-navy-900">Headquarters</h4>
+                  <h3 className="font-bold text-navy-900">US Corporate Headquarters</h3>
                   <p className="text-gray-600">100 Peachtree Street, Suite 2500<br />Atlanta, GA 30303</p>
                 </div>
               </div>

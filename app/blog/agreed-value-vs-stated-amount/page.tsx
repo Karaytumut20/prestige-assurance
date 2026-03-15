@@ -2,10 +2,30 @@ import type { Metadata } from 'next';
 import { AlertTriangle, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
+import { siteConfig } from '@/lib/site';
+
 export const metadata: Metadata = {
-  title: "Agreed Value vs Stated Amount | Luxury Car Insurance Guide",
-  description: "Don't let depreciation ruin your investment. Learn why Ferrari, Porsche, and Bentley owners need Agreed Value coverage.",
-  keywords: ["Agreed Value Insurance", "Stated Amount vs Actual Cash Value", "Exotic Car Insurance", "Luxury Auto Insurance"],
+  title: "Agreed Value vs Stated Amount | US Luxury Auto Insurance Guide",
+  description: "Don't let depreciation ruin your investment. Learn why American Ferrari, Porsche, and Bentley owners need Agreed Value coverage from US carriers.",
+  keywords: ["Agreed Value Insurance USA", "Stated Amount vs Actual Cash Value", "Exotic Car Insurance America", "US Luxury Auto Insurance", "High Net Worth Insurance US"],
+  alternates: {
+    canonical: `${siteConfig.url}/blog/agreed-value-vs-stated-amount`,
+  },
+  openGraph: {
+    title: "Agreed Value vs Stated Amount | US Luxury Car Guide",
+    description: "Exactly how US insurance carriers value exotic vehicles and how to protect your supercar.",
+    url: `${siteConfig.url}/blog/agreed-value-vs-stated-amount`,
+    siteName: siteConfig.name,
+    locale: "en_US",
+    type: "article",
+    publishedTime: "2024-01-15T00:00:00.000Z",
+    authors: ["Portonova Advisory Team"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agreed Value vs Stated Amount",
+    description: "A must-read guide for luxury car owners in the US.",
+  },
 };
 
 export default function Page() {

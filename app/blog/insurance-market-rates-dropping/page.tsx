@@ -2,10 +2,30 @@ import type { Metadata } from 'next';
 import { ArrowLeft, DollarSign } from 'lucide-react';
 import Link from 'next/link';
 
+import { siteConfig } from '@/lib/site';
+
 export const metadata: Metadata = {
-  title: "Why Insurance Rates are Dropping in 2025 | Market Watch",
-  description: "The hard insurance market is softening. Find out why commercial and personal insurance premiums are finally going down.",
-  keywords: ["Insurance Market Trends 2025", "Soft Insurance Market", "Lower Insurance Premiums"],
+  title: "Why US Insurance Rates are Dropping in 2025 | Market Watch",
+  description: "The hard American insurance market is softening. Find out why commercial and personal insurance premiums across the USA are finally going down.",
+  keywords: ["US Insurance Market Trends 2025", "American Soft Insurance Market", "Lower US Insurance Premiums", "National Insurance Rates"],
+  alternates: {
+    canonical: `${siteConfig.url}/blog/insurance-market-rates-dropping`,
+  },
+  openGraph: {
+    title: "Why US Insurance Rates are Dropping in 2025",
+    description: "Insights into the shifting American insurance market and how to capitalize on lower rates.",
+    url: `${siteConfig.url}/blog/insurance-market-rates-dropping`,
+    siteName: siteConfig.name,
+    locale: "en_US",
+    type: "article",
+    publishedTime: "2024-02-10T00:00:00.000Z",
+    authors: ["Portonova Economics Team"],
+  },
+  twitter: {
+    card: "summary",
+    title: "US Insurance Rates Dropping",
+    description: "The hard market is over. Learn how to save on your US policies.",
+  },
 };
 
 export default function Page() {

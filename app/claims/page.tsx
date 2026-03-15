@@ -12,9 +12,9 @@ export default function Page() {
             <ShieldAlert size={14} />
             Concierge Support Center
           </div>
-          <h1 className="text-4xl md:text-6xl font-serif mb-6">How can we assist you?</h1>
+          <h1 className="text-4xl md:text-6xl font-serif mb-6">Nationwide US Insurance Claims Support</h1>
           <p className="text-gray-400 max-w-xl mx-auto">
-            Our claims team operates 24/7/365 to ensure your assets are restored with minimal disruption to your lifestyle.
+            Our specialized American claims team operates 24/7/365 to ensure your high-value assets are restored with minimal disruption to your lifestyle across all 50 states.
           </p>
         </div>
       </section>
@@ -39,8 +39,8 @@ export default function Page() {
             <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
               <FileText size={28} />
             </div>
-            <h3 className="text-xl font-bold text-navy-900 mb-2">File a New Claim</h3>
-            <p className="text-gray-500 text-sm mb-6">Report a new incident directly to an agent.</p>
+            <h2 className="text-xl font-bold text-navy-900 mb-2">File a New Property or Auto Claim</h2>
+            <p className="text-gray-500 text-sm mb-6">Report a new incident directly to a licensed US agent.</p>
             <a
               href="tel:+16289995230"
               className="w-full bg-navy-900 text-white px-6 py-3 text-sm font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-navy-900 transition-colors flex items-center justify-center gap-2"
@@ -71,7 +71,7 @@ export default function Page() {
       {/* Claims Process */}
       <section className="py-24 container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-serif text-navy-900 mb-12 text-center">The "White Glove" Standard</h2>
+          <h2 className="text-3xl font-serif text-navy-900 mb-12 text-center">The "White Glove" US Claims Standard</h2>
           <div className="space-y-8">
             {[
               { step: "01", title: "Immediate Response", desc: "A dedicated Claims Advocate is assigned to you within 30 minutes of notification." },
@@ -81,7 +81,7 @@ export default function Page() {
               <div key={item.step} className="flex gap-6 items-start border-b border-gray-100 pb-8 last:border-0">
                 <div className="text-4xl font-serif text-gold-500 opacity-30">{item.step}</div>
                 <div>
-                  <h4 className="text-xl font-bold text-navy-900 mb-2">{item.title}</h4>
+                  <h3 className="text-xl font-bold text-navy-900 mb-2">{item.title}</h3>
                   <p className="text-gray-600">{item.desc}</p>
                 </div>
               </div>

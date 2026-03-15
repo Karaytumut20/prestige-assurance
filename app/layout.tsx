@@ -4,9 +4,15 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/site";
+import type { Viewport } from 'next';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: 'swap', preload: true });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: 'swap', preload: true });
+
+export const viewport: Viewport = {
+  themeColor: '#020617',
+  viewportFit: 'cover',
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

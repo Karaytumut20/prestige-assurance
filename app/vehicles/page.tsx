@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Car, Truck, Phone, TrendingDown, CheckCircle2, FileBarChart } from 'lucide-react';
+import Image from 'next/image';
 import FAQ from '@/components/FAQ';
 import CarrierLogos from '@/components/CarrierLogos';
 
@@ -33,17 +34,17 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <section className="relative pt-44 pb-20 bg-navy-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2000')] bg-cover bg-center opacity-20" />
+        <Image src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2000" fill alt="Commercial Fleet Background" className="object-cover opacity-20" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/80 to-transparent" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gold-500 tracking-[0.3em] text-xs font-bold uppercase mb-4 block">
             National Transportation Division
           </motion.span>
           <motion.h1 initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="text-5xl md:text-7xl font-serif mb-6">
-            Commercial Fleet & <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-700">Luxury Auto</span>
+            US Commercial Fleet & <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-700">Luxury Auto</span>
           </motion.h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
-            We specialize in reducing operational costs for trucking fleets and slashing premiums for luxury vehicle owners.
+            We specialize in reducing operational insurance costs for American trucking fleets and slashing premiums for domestic luxury vehicle owners.
           </p>
         </div>
       </section>
@@ -59,7 +60,7 @@ export default function Page() {
                 <h2 className="text-4xl font-serif text-navy-900">Trucking & Fleet Savings</h2>
              </div>
              <p className="text-gray-600 text-lg leading-relaxed mb-8">
-               Insurance is one of your biggest expenses. We help you control it. Our clients save an average of <strong>20-30% on annual premiums</strong> by switching to our optimized fleet programs.
+               Insurance is one of your biggest expenses. We help you control it across all 50 states. Our US clients save an average of <strong>20-30% on annual DOT premiums</strong> by switching to our optimized fleet programs.
              </p>
              <div className="space-y-4">
                {["Low Down Payments", "Monthly Payment Plans", "Volume Discounts for 3+ Trucks", "Claims-Free Bonuses"].map((item, i) => (
@@ -115,7 +116,7 @@ export default function Page() {
             <div className="lg:w-1/2">
                <div className="flex items-center gap-3 mb-6">
                   <Car className="text-gold-500" size={40} />
-                  <h2 className="text-4xl font-serif text-navy-900">Luxury Auto, Logical Price</h2>
+                  <h2 className="text-4xl font-serif text-navy-900">US Luxury Auto, Logical Price</h2>
                </div>
                <p className="text-gray-600 text-lg leading-relaxed mb-8">
                  Owning a Ferrari or Bentley shouldn't mean being overcharged. We use specialized "Agreed Value" policies that are often <strong>cheaper than standard carriers</strong> like Geico or Progressive for high-end cars.
@@ -125,7 +126,7 @@ export default function Page() {
                </a>
             </div>
             <div className="lg:w-1/2 relative h-[300px] w-full bg-gray-200">
-               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000')] bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700" />
+               <Image src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000" fill alt="Luxury Auto Background" className="object-cover grayscale hover:grayscale-0 transition-all duration-700" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
           </div>
         </div>

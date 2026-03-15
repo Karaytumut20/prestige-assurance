@@ -1,12 +1,30 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
 
+import { siteConfig } from '@/lib/site';
+
 export const metadata: Metadata = {
-  title: 'Home',
-  description: 'Portonova - Premier provider of Commercial Trucking and Luxury Auto Insurance with up to 30% savings.',
+  title: "Portonova | Premier Commercial Trucking & Luxury Auto Insurance USA",
+  description: "Portonova offers up to 30% savings on Commercial Trucking, Fleet Liability, Health, and Luxury Auto Insurance nationwide across all 50 US states.",
+  keywords: ["Commercial Trucking Insurance USA", "Luxury Auto Insurance America", "Nationwide Fleet Insurance", "US Health Insurance Brokers", "Portonova Assurance Group"],
   alternates: {
-    canonical: '/',
-  }
+    canonical: siteConfig.url,
+  },
+  openGraph: {
+    title: "Portonova | Premier US Insurance Brokerage",
+    description: "Lower your operations costs with our wholesale rates on trucking, fleet, and luxury auto policies across the United States.",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "en_US",
+    type: "website",
+    images: ["/og-image-main.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portonova Insurance USA",
+    description: "Up to 30% savings on premium insurance policies nationwide.",
+  },
+  category: "insurance",
 };
 
 import dynamic from 'next/dynamic';
@@ -56,7 +74,7 @@ export default function Home() {
       <section id="services" className="py-24 px-6 container mx-auto">
         <div className="text-center mb-16">
           <span className="text-gold-500 font-bold tracking-widest uppercase text-xs">Our Core Expertise</span>
-          <h2 className="text-4xl font-serif text-navy-900 mt-2 mb-4">Complete Protection Portfolio</h2>
+          <h2 className="text-4xl font-serif text-navy-900 mt-2 mb-4">Complete US Protection Portfolio</h2>
           <div className="w-24 h-1 bg-gold-500 mx-auto" />
         </div>
 
@@ -81,8 +99,8 @@ export default function Home() {
       {/* NEW: Process Section */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-serif text-navy-900 mb-4">The Prestige Process</h2>
-          <p className="text-gray-500 mb-16 max-w-2xl mx-auto">We've simplified the insurance process to save you time and money.</p>
+          <h2 className="text-4xl font-serif text-navy-900 mb-4">The Portonova Nationwide Process</h2>
+          <p className="text-gray-500 mb-16 max-w-2xl mx-auto">We've simplified the American insurance process to save you time and money.</p>
 
           <div className="grid md:grid-cols-3 gap-12 relative">
             <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10 hidden md:block"></div>
@@ -110,7 +128,7 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif text-navy-900 mb-4">Why Clients Switch?</h2>
+            <h2 className="text-4xl font-serif text-navy-900 mb-4">Why American Clients Switch?</h2>
             <p className="text-xl text-gold-600 font-bold">Answer: We simply cost less.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-12 text-center">
@@ -137,7 +155,7 @@ export default function Home() {
       <section className="py-24 bg-navy-900 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-6">
-           <h2 className="text-4xl font-serif text-center mb-16">Trusted by the Best</h2>
+           <h2 className="text-4xl font-serif text-center mb-16">Trusted by the Best Fleets in the US</h2>
            <div className="grid md:grid-cols-3 gap-8">
              {testimonials.map((t, i) => (
                <div key={i} className="bg-white/5 p-8 border border-white/10 rounded-lg backdrop-blur-sm">

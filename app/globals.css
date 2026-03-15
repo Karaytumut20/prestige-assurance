@@ -35,11 +35,19 @@
   --foreground-rgb: 10, 25, 47;
 }
 
+html, body {
+  background-color: var(--color-navy-950, #020617); /* Fallback to a very dark navy/slate to match footer */
+}
+
 body {
   color: var(--color-navy-800);
-  background: var(--color-marble);
+  background: var(--color-marble); /* Main content area stays marble */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
 }
 
 /* Başlıkların Hepsine Serif Fontu Ata */
@@ -52,24 +60,19 @@ h6 {
   font-family: var(--font-serif);
 }
 
-/* LÜKS SCROLLBAR */
+/* LÜKS SCROLLBAR (Gizli Ana Scrollbar) */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
-::-webkit-scrollbar-track {
-  background: var(--color-navy-900);
-}
-::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold-500);
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* ALTIN YAZI EFEKTİ */
 .text-gradient-gold {
   background: linear-gradient(135deg, #d4af37, #ffe585, #aa8c2c);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
