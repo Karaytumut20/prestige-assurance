@@ -1,8 +1,19 @@
-'use client';
+import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
-import CarrierLogos from '@/components/CarrierLogos';
-import BlogSection from '@/components/BlogSection';
-import Newsletter from '@/components/Newsletter';
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Portonova - Premier provider of Commercial Trucking and Luxury Auto Insurance with up to 30% savings.',
+  alternates: {
+    canonical: '/',
+  }
+};
+
+import dynamic from 'next/dynamic';
+
+const CarrierLogos = dynamic(() => import('@/components/CarrierLogos'), { ssr: true });
+const BlogSection = dynamic(() => import('@/components/BlogSection'), { ssr: true });
+const Newsletter = dynamic(() => import('@/components/Newsletter'), { ssr: true });
 import { Truck, Car, Heart, ArrowRight, DollarSign, Percent, ShieldCheck, Star, Users, Clock } from 'lucide-react';
 import Link from 'next/link';
 
@@ -78,17 +89,17 @@ export default function Home() {
 
             <div className="bg-gray-50 p-4 relative">
               <div className="w-16 h-16 bg-navy-900 text-gold-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold border-4 border-white shadow-lg">1</div>
-              <h4 className="text-xl font-bold text-navy-900 mb-2">Request Quote</h4>
+              <h3 className="text-xl font-bold text-navy-900 mb-2">Request Quote</h3>
               <p className="text-gray-600 text-sm">Call us or submit your details. It takes less than 5 minutes.</p>
             </div>
             <div className="bg-gray-50 p-4 relative">
               <div className="w-16 h-16 bg-navy-900 text-gold-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold border-4 border-white shadow-lg">2</div>
-              <h4 className="text-xl font-bold text-navy-900 mb-2">We Compare</h4>
+              <h3 className="text-xl font-bold text-navy-900 mb-2">We Compare</h3>
               <p className="text-gray-600 text-sm">We check rates across 40+ carriers to find the lowest price.</p>
             </div>
             <div className="bg-gray-50 p-4 relative">
               <div className="w-16 h-16 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold border-4 border-white shadow-lg">3</div>
-              <h4 className="text-xl font-bold text-navy-900 mb-2">You Save</h4>
+              <h3 className="text-xl font-bold text-navy-900 mb-2">You Save</h3>
               <p className="text-gray-600 text-sm">Bind coverage instantly and start saving on your premiums.</p>
             </div>
           </div>
@@ -105,17 +116,17 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-12 text-center">
             <div className="p-8 border border-gray-100 hover:border-gold-500 transition-colors rounded-sm">
               <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600"><DollarSign size={32} /></div>
-              <h4 className="text-xl font-bold text-navy-900 mb-2">Wholesale Pricing</h4>
+              <h3 className="text-xl font-bold text-navy-900 mb-2">Wholesale Pricing</h3>
               <p className="text-gray-600">We bypass the middlemen and standard brokers to get you direct-to-carrier pricing.</p>
             </div>
             <div className="p-8 border border-gray-100 hover:border-gold-500 transition-colors rounded-sm">
               <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600"><Percent size={32} /></div>
-              <h4 className="text-xl font-bold text-navy-900 mb-2">Fleet Discounts</h4>
+              <h3 className="text-xl font-bold text-navy-900 mb-2">Fleet Discounts</h3>
               <p className="text-gray-600">Volume discounts for commercial trucking fleets and multi-car family portfolios.</p>
             </div>
             <div className="p-8 border border-gray-100 hover:border-gold-500 transition-colors rounded-sm">
               <div className="w-16 h-16 bg-gold-50 rounded-full flex items-center justify-center mx-auto mb-6 text-gold-600"><ShieldCheck size={32} /></div>
-              <h4 className="text-xl font-bold text-navy-900 mb-2">Better Coverage</h4>
+              <h3 className="text-xl font-bold text-navy-900 mb-2">Better Coverage</h3>
               <p className="text-gray-600">We audit your current policy. 9 out of 10 times, we find better coverage for a lower price.</p>
             </div>
           </div>

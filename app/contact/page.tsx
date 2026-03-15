@@ -1,7 +1,10 @@
 'use client';
-import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+
+// Not: Client component olduğu için Metadata'yı layout üzerinden veya manuel vermemiz gerekirdi.
+// Ancak Next.js'de en temiz yol, bu sayfa için özel bir layout veya statik metadata export etmektir.
+// Aşağıdaki çözüm, Next.js App Router uyumluluğu için sayfa yapısını korur.
 
 export default function Page() {
   const PHONE_DISPLAY = "+1 (628) 999-5230";
@@ -19,13 +22,12 @@ export default function Page() {
 
       <section className="py-24 container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16">
-
           {/* Contact Info */}
           <div>
             <h2 className="text-3xl font-serif text-navy-900 mb-8">Get in Touch</h2>
             <div className="space-y-8">
               <div className="flex items-start gap-4">
-                <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><Phone size={24}/></div>
+                <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><Phone size={24} /></div>
                 <div>
                   <h4 className="font-bold text-navy-900">Phone Support</h4>
                   <p className="text-gray-500 text-sm mb-1">Direct line to agents.</p>
@@ -33,7 +35,7 @@ export default function Page() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><Mail size={24}/></div>
+                <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><Mail size={24} /></div>
                 <div>
                   <h4 className="font-bold text-navy-900">Email</h4>
                   <p className="text-gray-500 text-sm mb-1">For documents and inquiries.</p>
@@ -41,16 +43,16 @@ export default function Page() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><MapPin size={24}/></div>
+                <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><MapPin size={24} /></div>
                 <div>
                   <h4 className="font-bold text-navy-900">Headquarters</h4>
-                  <p className="text-gray-600">100 Park Avenue, Suite 2500<br/>New York, NY 10017</p>
+                  <p className="text-gray-600">100 Peachtree Street, Suite 2500<br />Atlanta, GA 30303</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Contact Form (Visual Only) */}
+          {/* Contact Form */}
           <div className="bg-white p-8 shadow-xl border-t-4 border-gold-500">
             <h3 className="text-2xl font-serif text-navy-900 mb-6">Send a Message</h3>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -61,12 +63,17 @@ export default function Page() {
               <input type="email" placeholder="Email Address" className="w-full p-4 bg-gray-50 border border-gray-200 focus:border-gold-500 outline-none" />
               <input type="tel" placeholder="Phone Number" className="w-full p-4 bg-gray-50 border border-gray-200 focus:border-gold-500 outline-none" />
               <textarea rows={4} placeholder="How can we help?" className="w-full p-4 bg-gray-50 border border-gray-200 focus:border-gold-500 outline-none"></textarea>
+              <div className="flex items-start gap-3 mt-2 text-xs text-gray-500">
+                <input type="checkbox" id="tcpa" required className="mt-1 flex-shrink-0" />
+                <label htmlFor="tcpa">
+                  By clicking submit, I agree to the Privacy Policy and authorize Prestige Assurance Group to contact me at the number provided via calls or text messages (including using pre-recorded/artificial voice or automated technology). Consent is not a condition of purchase. Message and data rates may apply.
+                </label>
+              </div>
               <button className="w-full bg-navy-900 text-white py-4 font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-navy-900 transition-colors">
                 Submit Request
               </button>
             </form>
           </div>
-
         </div>
       </section>
     </main>

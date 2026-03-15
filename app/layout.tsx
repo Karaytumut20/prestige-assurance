@@ -3,42 +3,26 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { siteConfig } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: 'swap', preload: true });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: 'swap', preload: true });
 
-// GLOBAL METADATA (Varsayılan)
 export const metadata: Metadata = {
-  metadataBase: new URL('https://prestigeassurance.com'), // Kendi domaininizle değiştirin
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Prestige Assurance | Affordable Commercial Trucking & Luxury Auto Insurance",
-    template: "%s | Prestige Assurance"
+    default: `${siteConfig.name} | Affordable Commercial Trucking & Luxury Auto Insurance`,
+    template: `%s | ${siteConfig.shortName}`
   },
-  description: "Save up to 30% on Commercial Trucking, Fleet Liability, and Luxury Auto Insurance. Nationwide coverage in 50 states with 24/7 concierge claims support.",
-  keywords: ["Trucking Insurance", "Fleet Insurance", "Luxury Car Insurance", "Health Insurance PPO", "Commercial Auto Liability", "USA Insurance Agent"],
-  authors: [{ name: "Prestige Assurance Group" }],
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.name }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://prestigeassurance.com",
-    siteName: "Prestige Assurance",
-    images: [
-      {
-        url: "/og-image-main.jpg", // Public klasörüne bu isimde bir görsel ekleyin
-        width: 1200,
-        height: 630,
-        alt: "Prestige Assurance - Elite Coverage",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@prestigeassurance",
-    creator: "@prestigeassurance",
-  },
-  robots: {
-    index: true,
-    follow: true,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
   },
 };
 
@@ -49,6 +33,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteConfig.organizationSchema) }}
+        />
+      </head>
       <body className={`${inter.variable} ${playfair.variable} antialiased bg-[#FDFDFD]`}>
         <Navbar />
         {children}

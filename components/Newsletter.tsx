@@ -8,7 +8,7 @@ export default function Newsletter() {
       <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
-        <h2 className="text-3xl font-serif mb-4">Join the Prestige Circle</h2>
+        <h2 className="text-3xl font-serif mb-4">Join the Portonova Circle</h2>
         <p className="text-gray-400 mb-8 max-w-lg mx-auto">
           Get exclusive market updates, risk management tips, and wholesale rate alerts delivered to your inbox.
         </p>

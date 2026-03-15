@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { ShieldCheck, ChevronRight, Phone } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -51,13 +52,12 @@ export default function Hero() {
           className="flex flex-col md:flex-row gap-5 justify-center"
         >
           {/* BUTTON 1: DIRECT CALL */}
-          <a
-            href="tel:+16289995230"
+          <Link
+            href="/quote"
             className="bg-gold-500 text-navy-900 px-10 py-4 text-sm font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
           >
-            <Phone size={18} />
             Request Consultation
-          </a>
+          </Link>
 
           {/* BUTTON 2: SCROLL TO SERVICES */}
           <a

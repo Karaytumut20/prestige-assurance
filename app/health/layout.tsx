@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
+import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: "Affordable Health Insurance PPO & Life Coverage | Prestige",
+  title: "Affordable Health Insurance PPO & Life Coverage | Portonova",
   description: "Find the best health insurance plans with nationwide PPO networks. Low premiums for individuals, families, and small businesses.",
   keywords: ["Health Insurance PPO", "Affordable Health Insurance", "Life Insurance", "Group Benefits", "Medical Insurance USA"],
+  alternates: {
+    canonical: `${siteConfig.url}/health`,
+  },
   openGraph: {
     title: "Affordable Health & Life Insurance",
     description: "Get nationwide PPO coverage for less. Compare quotes today.",

@@ -1,13 +1,12 @@
 /**
- * PRESTIGE ASSURANCE - BLOG PAGES CREATION
- * Amaç: Ana sayfadaki blog özetlerinin detay sayfalarını oluşturmak.
- * Özellikler: Tam SEO uyumlu, CTA (Arama) odaklı, Zengin içerikli.
+ * PRESTIGE ASSURANCE - FINAL SEO MASTER
+ * Amaç: Google Schema (Yapısal Veri), Sitemap, Robots.txt ve Eksik Meta Etiketlerini tamamlamak.
  */
 
 const fs = require("fs");
 const path = require("path");
 
-console.log(">>> Blog sayfaları ve SEO içerikleri oluşturuluyor...");
+console.log(">>> SEO Altyapısı Tamamlanıyor (Schema, Sitemap, Robots)...");
 
 function writeFile(filePath, content) {
   const dir = path.dirname(filePath);
@@ -16,322 +15,256 @@ function writeFile(filePath, content) {
   console.log(`✔ Oluşturuldu: ${filePath}`);
 }
 
-const PHONE_HREF = "tel:+16289995230";
-
-// 1. ÖNCE BLOG SECTION GÜNCELLENİYOR (Linkler Eklendi)
-const updatedBlogSection = `
+// 1. CONTACT PAGE METADATA (Eksikti, ekleniyor)
+const contactPageWithMeta = `
 'use client';
-import { ArrowRight, TrendingUp, Shield, Truck } from 'lucide-react';
-import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import Navbar from '@/components/Navbar';
 
-const articles = [
-  {
-    category: "Fleet Management",
-    title: "5 Ways to Lower Commercial Trucking Insurance Costs",
-    excerpt: "Rising premiums don't have to be the norm. Discover how telematics and safety programs can slash your rates.",
-    icon: <Truck className="text-gold-500" size={24} />,
-    slug: "/blog/lower-trucking-insurance-costs"
-  },
-  {
-    category: "Asset Protection",
-    title: "Agreed Value vs. Stated Amount: Protecting Your Supercar",
-    excerpt: "Why standard auto policies leave Ferrari and Lamborghini owners underinsured in total loss scenarios.",
-    icon: <Shield className="text-gold-500" size={24} />,
-    slug: "/blog/agreed-value-vs-stated-amount"
-  },
-  {
-    category: "Market Watch",
-    title: "Why Insurance Rates are Finally Dropping in 2025",
-    excerpt: "Our analysts explain the current shift in the US insurance market and what it means for your renewal.",
-    icon: <TrendingUp className="text-gold-500" size={24} />,
-    slug: "/blog/insurance-market-rates-dropping"
-  }
-];
+// Not: Client component olduğu için Metadata'yı layout üzerinden veya manuel vermemiz gerekirdi.
+// Ancak Next.js'de en temiz yol, bu sayfa için özel bir layout veya statik metadata export etmektir.
+// Aşağıdaki çözüm, Next.js App Router uyumluluğu için sayfa yapısını korur.
 
-export default function BlogSection() {
+export default function Page() {
+  const PHONE_DISPLAY = "+1 (628) 999-5230";
+  const PHONE_HREF = "tel:+16289995230";
+
   return (
-    <section className="py-24 bg-white border-t border-gray-100">
-      <div className="container mx-auto px-6">
-        <div className="flex justify-between items-end mb-12">
+    <main className="min-h-screen bg-[#FDFDFD]">
+      <Navbar />
+      <section className="pt-44 pb-20 bg-navy-900 text-white">
+        <div className="container mx-auto px-6 text-center">
+          <h1 className="text-5xl font-serif mb-6">Contact Prestige</h1>
+          <p className="text-gray-400">We are available 24/7 for our clients.</p>
+        </div>
+      </section>
+
+      <section className="py-24 container mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-16">
+          {/* Contact Info */}
           <div>
-            <h2 className="text-4xl font-serif text-navy-900 mb-2">Industry Insights</h2>
-            <div className="w-16 h-1 bg-gold-500" />
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {articles.map((article, i) => (
-            <Link key={i} href={article.slug} className="group cursor-pointer block">
-              <div className="h-48 bg-navy-900/5 mb-6 relative overflow-hidden flex items-center justify-center border border-gray-100 group-hover:border-gold-500 transition-colors">
-                 <div className="bg-white p-4 rounded-full shadow-lg group-hover:scale-110 transition-transform">
-                    {article.icon}
-                 </div>
+            <h2 className="text-3xl font-serif text-navy-900 mb-8">Get in Touch</h2>
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><Phone size={24}/></div>
+                <div>
+                  <h4 className="font-bold text-navy-900">Phone Support</h4>
+                  <p className="text-gray-500 text-sm mb-1">Direct line to agents.</p>
+                  <a href={PHONE_HREF} className="text-lg font-serif text-navy-900 hover:text-gold-600">{PHONE_DISPLAY}</a>
+                </div>
               </div>
-              <div className="text-xs font-bold text-gold-600 uppercase tracking-widest mb-2">{article.category}</div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors leading-tight">
-                {article.title}
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">{article.excerpt}</p>
-              <div className="flex items-center gap-2 text-navy-900 text-xs font-bold uppercase tracking-wider group-hover:underline">
-                Read Full Article <ArrowRight size={12} />
+              <div className="flex items-start gap-4">
+                <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><Mail size={24}/></div>
+                <div>
+                  <h4 className="font-bold text-navy-900">Email</h4>
+                  <p className="text-gray-500 text-sm mb-1">For documents and inquiries.</p>
+                  <a href="mailto:info@prestigeassurance.com" className="text-lg font-serif text-navy-900 hover:text-gold-600">info@prestigeassurance.com</a>
+                </div>
               </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-`;
-
-// 2. BLOG 1: TRUCKING COSTS (Filo Maliyetleri)
-const blogPost1 = `
-import type { Metadata } from 'next';
-import { Truck, CheckCircle2, Phone, ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
-
-export const metadata: Metadata = {
-  title: "5 Ways to Lower Commercial Trucking Insurance Costs | Prestige",
-  description: "Learn how to reduce fleet insurance premiums using telematics, safety programs, and proper filings. Expert advice for US trucking companies.",
-  keywords: ["Lower Trucking Insurance", "Fleet Insurance Savings", "Commercial Trucking Cost", "Telematics Insurance Discount"],
-};
-
-export default function Page() {
-  return (
-    <main className="min-h-screen bg-[#FDFDFD] pt-32 pb-20">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-gold-600 mb-8 font-bold text-sm uppercase tracking-wider">
-          <ArrowLeft size={16} /> Back to Home
-        </Link>
-
-        <span className="text-gold-600 font-bold uppercase tracking-widest text-xs mb-4 block">Fleet Management</span>
-        <h1 className="text-4xl md:text-6xl font-serif text-navy-900 mb-8 leading-tight">
-          5 Ways to Lower Commercial Trucking Insurance Costs
-        </h1>
-
-        <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-          <p className="text-xl font-light mb-8 text-gray-800">
-            In the current logistics market, insurance is often the second largest fixed expense after fuel.
-            However, fleet owners often overpay by neglecting five critical risk factors. Here is how Prestige Assurance helps clients cut costs by up to 30%.
-          </p>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">1. Implement Telematics & Dash Cams</h3>
-          <p>
-            Carriers love data. Installing ELDs (Electronic Logging Devices) and forward-facing cameras proves your drivers are safe.
-            We work with carriers like Progressive and Travelers that offer immediate <strong>5-10% discounts</strong> for fleets with verified telematics data.
-          </p>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">2. Raise Your Deductibles</h3>
-          <p>
-            Many fleets carry a $1,000 deductible on Physical Damage. By raising this to $2,500 or $5,000, you can significantly lower your monthly premium.
-            Use the savings to build a "maintenance fund" for minor repairs.
-          </p>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">3. Monitor CSA Scores Aggressively</h3>
-          <p>
-            Your FMCSA Safety Score is public record. Insurance underwriters check this first.
-            Regularly inspect your vehicles to avoid "Out-of-Service" violations which skyrocket premiums.
-          </p>
-
-          <div className="bg-navy-900 text-white p-10 rounded-lg my-12 shadow-2xl">
-            <h4 className="text-2xl font-serif mb-4 flex items-center gap-3">
-              <Truck className="text-gold-500" /> Need a Policy Audit?
-            </h4>
-            <p className="mb-6 text-gray-300">
-              Most truckers are paying for coverages they don't need. Let us review your policy for free.
-            </p>
-            <a href="tel:+16289995230" className="bg-gold-500 text-navy-900 px-8 py-3 font-bold uppercase tracking-widest hover:bg-white transition-colors inline-flex items-center gap-2">
-              <Phone size={18} /> Call +1 (628) 999-5230
-            </a>
+              <div className="flex items-start gap-4">
+                <div className="bg-gold-500/10 p-4 rounded-full text-gold-600"><MapPin size={24}/></div>
+                <div>
+                  <h4 className="font-bold text-navy-900">Headquarters</h4>
+                  <p className="text-gray-600">100 Park Avenue, Suite 2500<br/>New York, NY 10017</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">4. Hire Experienced Drivers</h3>
-          <p>
-            Drivers with 2+ years of CDL experience and clean MVRs (Motor Vehicle Records) are gold.
-            While new drivers are cheaper to hire, they are expensive to insure.
-          </p>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">5. Pay in Full (If Possible)</h3>
-          <p>
-            Many carriers offer a "Paid-in-Full" discount ranging from <strong>10% to 15%</strong>.
-            If cash flow allows, this is the easiest return on investment you can get.
-          </p>
+          {/* Contact Form */}
+          <div className="bg-white p-8 shadow-xl border-t-4 border-gold-500">
+            <h3 className="text-2xl font-serif text-navy-900 mb-6">Send a Message</h3>
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-2 gap-4">
+                <input type="text" placeholder="First Name" className="w-full p-4 bg-gray-50 border border-gray-200 focus:border-gold-500 outline-none" />
+                <input type="text" placeholder="Last Name" className="w-full p-4 bg-gray-50 border border-gray-200 focus:border-gold-500 outline-none" />
+              </div>
+              <input type="email" placeholder="Email Address" className="w-full p-4 bg-gray-50 border border-gray-200 focus:border-gold-500 outline-none" />
+              <input type="tel" placeholder="Phone Number" className="w-full p-4 bg-gray-50 border border-gray-200 focus:border-gold-500 outline-none" />
+              <textarea rows={4} placeholder="How can we help?" className="w-full p-4 bg-gray-50 border border-gray-200 focus:border-gold-500 outline-none"></textarea>
+              <button className="w-full bg-navy-900 text-white py-4 font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-navy-900 transition-colors">
+                Submit Request
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
 `;
 
-// 3. BLOG 2: AGREED VALUE (Lüks Araçlar)
-const blogPost2 = `
+// CONTACT LAYOUT (SEO BURADA OLACAK)
+const contactLayout = `
 import type { Metadata } from 'next';
-import { Shield, AlertTriangle, Phone, ArrowLeft, CheckCircle2 } from 'lucide-react';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "Agreed Value vs Stated Amount | Luxury Car Insurance Guide",
-  description: "Don't let depreciation ruin your investment. Learn why Ferrari, Porsche, and Bentley owners need Agreed Value coverage.",
-  keywords: ["Agreed Value Insurance", "Stated Amount vs Actual Cash Value", "Exotic Car Insurance", "Luxury Auto Insurance"],
+  title: "Contact Us | 24/7 Insurance Support Agent",
+  description: "Get in touch with Prestige Assurance. Call +1 (628) 999-5230 for immediate quotes on Trucking, Fleet, and Luxury Auto insurance.",
+  keywords: ["Contact Insurance Agent", "Insurance Customer Service", "File a Claim Phone Number"],
 };
 
-export default function Page() {
-  return (
-    <main className="min-h-screen bg-[#FDFDFD] pt-32 pb-20">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-gold-600 mb-8 font-bold text-sm uppercase tracking-wider">
-          <ArrowLeft size={16} /> Back to Home
-        </Link>
-
-        <span className="text-gold-600 font-bold uppercase tracking-widest text-xs mb-4 block">Asset Protection</span>
-        <h1 className="text-4xl md:text-6xl font-serif text-navy-900 mb-8 leading-tight">
-          Agreed Value vs. Stated Amount: Protecting Your Supercar
-        </h1>
-
-        <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-          <p className="text-xl font-light mb-8 text-gray-800">
-            Insuring a Honda Civic is simple; insuring a Ferrari SF90 is an art. The biggest mistake luxury car owners make is buying a standard auto policy
-            that uses "Actual Cash Value" (ACV). Here is why that is dangerous.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-8 my-12">
-            <div className="bg-red-50 p-8 border-l-4 border-red-500">
-              <h4 className="text-red-700 font-bold mb-2 flex items-center gap-2"><AlertTriangle size={20}/> The Trap: Actual Cash Value</h4>
-              <p className="text-sm">
-                Standard carriers (like Geico/Progressive) calculate value based on depreciation. If you buy a car for $300k and crash it a year later,
-                they might say it's worth $220k. You lose $80k instantly.
-              </p>
-            </div>
-            <div className="bg-green-50 p-8 border-l-4 border-green-500">
-              <h4 className="text-green-700 font-bold mb-2 flex items-center gap-2"><CheckCircle2 size={20}/> The Solution: Agreed Value</h4>
-              <p className="text-sm">
-                With Prestige Assurance, we agree on the value upfront (e.g., $300k). In a total loss, you get a check for exactly $300k.
-                No depreciation. No arguments.
-              </p>
-            </div>
-          </div>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">What About "Stated Amount"?</h3>
-          <p>
-            Some brokers sell "Stated Amount" as a luxury product, but it's not. It simply sets a <em>maximum</em> payout, but the carrier can still pay
-            the lesser of the Stated Amount or the Actual Cash Value. <strong>Avoid this at all costs.</strong>
-          </p>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">The Prestige Difference</h3>
-          <ul className="space-y-4 list-none pl-0">
-            <li className="flex gap-3"><CheckCircle2 className="text-gold-500 shrink-0"/> <span><strong>OEM Parts Only:</strong> We ensure your Porsche is repaired with Porsche parts, not aftermarket generics.</span></li>
-            <li className="flex gap-3"><CheckCircle2 className="text-gold-500 shrink-0"/> <span><strong>Choice of Body Shop:</strong> Take your car to the specialist you trust, not the cheapest shop in town.</span></li>
-            <li className="flex gap-3"><CheckCircle2 className="text-gold-500 shrink-0"/> <span><strong>Worldwide Coverage:</strong> Shipping your car to a rally in Europe? We can cover it.</span></li>
-          </ul>
-
-          <div className="bg-navy-900 text-white p-10 rounded-lg my-12 shadow-2xl text-center">
-            <h4 className="text-2xl font-serif mb-4">
-              Do You Know Your Policy Limits?
-            </h4>
-            <p className="mb-6 text-gray-300">
-              Don't wait for a claim to find out you're underinsured. Get a complimentary policy review today.
-            </p>
-            <a href="tel:+16289995230" className="bg-gold-500 text-navy-900 px-8 py-3 font-bold uppercase tracking-widest hover:bg-white transition-colors inline-block">
-              Get an Agreed Value Quote
-            </a>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }
 `;
 
-// 4. BLOG 3: MARKET RATES (Endüstri Trendleri)
-const blogPost3 = `
-import type { Metadata } from 'next';
-import { TrendingUp, Phone, ArrowLeft, DollarSign } from 'lucide-react';
-import Link from 'next/link';
+// 2. ROBOTS.TXT (Google Botları İçin)
+const robotsTxt = `
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      disallow: '/private/',
+    },
+    sitemap: 'https://prestigeassurance.com/sitemap.xml',
+  };
+}
+`;
+
+// 3. SITEMAP.XML (Site Haritası)
+const sitemapXml = `
+import { MetadataRoute } from 'next';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: 'https://prestigeassurance.com',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 1,
+    },
+    {
+      url: 'https://prestigeassurance.com/vehicles',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://prestigeassurance.com/health',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://prestigeassurance.com/claims',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: 'https://prestigeassurance.com/contact',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: 'https://prestigeassurance.com/blog/lower-trucking-insurance-costs',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+  ];
+}
+`;
+
+// 4. SCHEMA MARKUP (LAYOUT UPDATE)
+// Google'ın sizi "InsuranceAgency" olarak tanıması için bu JSON-LD kodunu Layout'a gömüyoruz.
+const rootLayoutWithSchema = `
+import type { Metadata } from "next";
+import { Inter, Playfair_Display } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: "Why Insurance Rates are Dropping in 2025 | Market Watch",
-  description: "The hard insurance market is softening. Find out why commercial and personal insurance premiums are finally going down.",
-  keywords: ["Insurance Market Trends 2025", "Soft Insurance Market", "Lower Insurance Premiums"],
+  metadataBase: new URL('https://prestigeassurance.com'),
+  title: {
+    default: "Prestige Assurance | Affordable Commercial Trucking & Luxury Auto Insurance",
+    template: "%s | Prestige Assurance"
+  },
+  description: "Save up to 30% on Commercial Trucking, Fleet Liability, and Luxury Auto Insurance. Nationwide coverage in 50 states with 24/7 concierge claims support.",
+  keywords: ["Trucking Insurance", "Fleet Insurance", "Luxury Car Insurance", "Health Insurance PPO", "Commercial Auto Liability", "USA Insurance Agent"],
+  authors: [{ name: "Prestige Assurance Group" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://prestigeassurance.com",
+    siteName: "Prestige Assurance",
+    images: [{ url: "/og-image-main.jpg", width: 1200, height: 630, alt: "Prestige Assurance" }],
+  },
 };
 
-export default function Page() {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  // Google İçin Yapısal Veri (Schema)
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "InsuranceAgency",
+    "name": "Prestige Assurance Group",
+    "image": "https://prestigeassurance.com/og-image-main.jpg",
+    "telephone": "+16289995230",
+    "url": "https://prestigeassurance.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "100 Park Avenue, Suite 2500",
+      "addressLocality": "New York",
+      "addressRegion": "NY",
+      "postalCode": "10017",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "priceRange": "$$"
+  };
+
   return (
-    <main className="min-h-screen bg-[#FDFDFD] pt-32 pb-20">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-gold-600 mb-8 font-bold text-sm uppercase tracking-wider">
-          <ArrowLeft size={16} /> Back to Home
-        </Link>
-
-        <span className="text-gold-600 font-bold uppercase tracking-widest text-xs mb-4 block">Market Watch</span>
-        <h1 className="text-4xl md:text-6xl font-serif text-navy-900 mb-8 leading-tight">
-          Why Insurance Rates are Finally Dropping in 2025
-        </h1>
-
-        <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-          <p className="text-xl font-light mb-8 text-gray-800">
-            For the past three years, we've been in a "Hard Market"—characterized by rising premiums and strict underwriting.
-            However, 2025 signals a shift. Capacity is returning, and rates are stabilizing.
-          </p>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">1. New Carriers Entering the Market</h3>
-          <p>
-            High premiums attracted new capital into the insurance sector. New "InsurTech" companies and established carriers expanding their appetite
-            means more competition. When carriers compete, <strong>you save.</strong>
-          </p>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">2. Supply Chain Stabilization</h3>
-          <p>
-            A major driver of auto insurance cost was the price of parts and used cars. As supply chains have normalized, the cost to repair
-            vehicles has leveled off, allowing carriers to reduce physical damage rates.
-          </p>
-
-          <div className="flex items-center gap-6 p-6 bg-gray-50 border-l-4 border-gold-500 my-8">
-            <DollarSign className="text-gold-600 shrink-0" size={32} />
-            <div>
-              <h4 className="font-bold text-navy-900">Pro Tip: Shop Your Renewal</h4>
-              <p className="text-sm">If you've been with the same carrier for 3+ years, you are likely overpaying. Loyalty taxes are real.</p>
-            </div>
-          </div>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">3. Reinsurance Costs Stabilizing</h3>
-          <p>
-            Insurance companies buy their own insurance (reinsurance). These costs spiked after global weather events but have now settled.
-            This savings is finally trickling down to the consumer level.
-          </p>
-
-          <h3 className="text-2xl font-serif text-navy-900 mt-12 mb-4">What Should You Do?</h3>
-          <p>
-            Now is the perfect time to market your renewal. Prestige Assurance has access to wholesale markets that are aggressively
-            looking for new business in Trucking, Luxury Auto, and Commercial Property.
-          </p>
-
-          <div className="bg-navy-900 text-white p-10 rounded-lg my-12 shadow-2xl text-center">
-            <h4 className="text-2xl font-serif mb-4">
-              Don't Auto-Renew. Compare Instead.
-            </h4>
-            <p className="mb-6 text-gray-300">
-              Let us check the market for you. It takes 5 minutes to potentially save thousands.
-            </p>
-            <a href="tel:+16289995230" className="bg-gold-500 text-navy-900 px-8 py-3 font-bold uppercase tracking-widest hover:bg-white transition-colors inline-block">
-              Start Your Quote
-            </a>
-          </div>
-        </div>
-      </div>
-    </main>
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className={\`\${inter.variable} \${playfair.variable} antialiased bg-[#FDFDFD]\`}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
   );
 }
 `;
 
 // Dosyaları Yaz
-writeFile("components/BlogSection.tsx", updatedBlogSection);
-writeFile("app/blog/lower-trucking-insurance-costs/page.tsx", blogPost1);
-writeFile("app/blog/agreed-value-vs-stated-amount/page.tsx", blogPost2);
-writeFile("app/blog/insurance-market-rates-dropping/page.tsx", blogPost3);
+writeFile("app/contact/page.tsx", contactPageWithMeta);
+writeFile("app/contact/layout.tsx", contactLayout); // Yeni
+writeFile("app/robots.ts", robotsTxt); // Yeni
+writeFile("app/sitemap.ts", sitemapXml); // Yeni
+writeFile("app/layout.tsx", rootLayoutWithSchema); // Güncelleme
 
-console.log("\n>>> BLOG SİSTEMİ TAMAMLANDI <<<");
-console.log("- Ana sayfadaki 'BlogSection' güncellendi ve linklendi.");
-console.log("- 3 adet detaylı, SEO uyumlu makale sayfası oluşturuldu.");
+console.log("\n>>> EKSİKLER GİDERİLDİ & ANALİZ TAMAM <<<");
+console.log("1. Contact Sayfası: Özel SEO başlığı eklendi.");
 console.log(
-  "- Her makalenin içinde dönüşüm için 'Call to Action' alanları var.",
+  "2. Schema Markup: Google için 'InsuranceAgency' kimliği tanımlandı (Layout içinde).",
+);
+console.log(
+  "3. Sitemap & Robots: Google botları için gerekli dosyalar oluşturuldu.",
+);
+console.log(
+  "4. Analiz Sonucu: Site şu an teknik olarak 'Enterprise' seviyesinde. İçerik dolu ve SEO uyumlu.",
 );

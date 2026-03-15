@@ -35,16 +35,15 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed w-full z-50 transition-all duration-500 ${
-          (scrolled || !isTransparent) && !isOpen
+        className={`fixed w-full z-50 transition-all duration-500 ${(scrolled || !isTransparent) && !isOpen
             ? 'bg-navy-900/98 backdrop-blur-md py-3 shadow-2xl border-b border-white/5'
             : 'bg-transparent py-6'
-        }`}
+          }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center text-white relative z-50">
           <Link href="/" className="flex flex-col group cursor-pointer">
-            <span className="text-2xl font-serif font-bold tracking-[0.3em] group-hover:text-gold-400 transition-colors">PRESTIGE</span>
-            <span className="text-[10px] tracking-[0.5em] text-gold-500 uppercase">Assurance Group</span>
+            <span className="text-2xl font-serif font-bold tracking-[0.3em] group-hover:text-gold-400 transition-colors">PORTONOVA</span>
+            <span className="text-[10px] tracking-[0.5em] text-gold-500 uppercase">Assurance</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,14 +56,22 @@ export default function Navbar() {
             ))}
             <div className="h-6 w-px bg-white/20 mx-2" />
 
-            {/* PHONE BUTTON - Direkt Arama */}
-            <a
-              href="tel:+16289995230"
-              className="flex items-center gap-2 bg-gold-500 text-navy-900 px-5 py-2.5 hover:bg-white transition-all duration-300 font-bold text-xs tracking-wider rounded-sm"
-            >
-              <PhoneCall size={14} />
-              +1 (628) 999-5230
-            </a>
+            {/* CTAs */}
+            <div className="flex flex-row items-center gap-4">
+              <Link
+                href="/quote"
+                className="hidden xl:flex items-center gap-2 bg-white text-navy-900 px-5 py-2.5 hover:bg-gray-200 transition-all duration-300 font-bold text-xs tracking-wider rounded-sm uppercase"
+              >
+                Get a Quote
+              </Link>
+              <a
+                href="tel:+16289995230"
+                className="flex items-center gap-2 bg-gold-500 text-navy-900 px-5 py-2.5 hover:bg-white transition-all duration-300 font-bold text-xs tracking-wider rounded-sm"
+              >
+                <PhoneCall size={14} />
+                +1 (628) 999-5230
+              </a>
+            </div>
           </div>
 
           {/* Mobile Toggle */}

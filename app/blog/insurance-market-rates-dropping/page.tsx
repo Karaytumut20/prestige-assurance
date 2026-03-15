@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { TrendingUp, Phone, ArrowLeft, DollarSign } from 'lucide-react';
+import { ArrowLeft, DollarSign } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {

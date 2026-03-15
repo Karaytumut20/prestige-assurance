@@ -13,8 +13,25 @@ const truckingFaqs = [
 export default function Page() {
   const PHONE_HREF = "tel:+16289995230";
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": truckingFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <main className="min-h-screen bg-[#FDFDFD]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="relative pt-44 pb-20 bg-navy-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2000')] bg-cover bg-center opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/80 to-transparent" />
@@ -80,7 +97,7 @@ export default function Page() {
                     <div className="text-2xl font-bold text-gray-400 line-through decoration-red-500">$245,000 / yr</div>
                  </div>
                  <div>
-                    <div className="text-gold-600 text-xs uppercase tracking-widest mb-1">Prestige Rate</div>
+                    <div className="text-gold-600 text-xs uppercase tracking-widest mb-1">Portonova Rate</div>
                     <div className="text-4xl font-serif font-bold text-navy-900">$188,000 / yr</div>
                  </div>
                  <div className="col-span-2 pt-4 border-t border-gray-100">
