@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+
 
 // Temsili Carrier İsimleri (Logo yerine şık tipografi)
 const carriers = [
@@ -14,16 +14,12 @@ export default function CarrierLogos() {
       </div>
       <div className="flex justify-center items-center gap-12 md:gap-24 opacity-40 grayscale flex-wrap px-6">
         {carriers.map((name, i) => (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 0.5 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="text-xl md:text-2xl font-serif font-bold text-navy-900 select-none"
+            className="text-xl md:text-2xl font-serif font-bold text-navy-900 select-none hover:opacity-100 transition-opacity duration-300"
           >
             {name}
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

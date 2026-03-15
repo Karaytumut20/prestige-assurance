@@ -27,11 +27,9 @@ export const metadata: Metadata = {
   category: "insurance",
 };
 
-import dynamic from 'next/dynamic';
-
-const CarrierLogos = dynamic(() => import('@/components/CarrierLogos'), { ssr: true });
-const BlogSection = dynamic(() => import('@/components/BlogSection'), { ssr: true });
-const Newsletter = dynamic(() => import('@/components/Newsletter'), { ssr: true });
+import CarrierLogos from '@/components/CarrierLogos';
+import BlogSection from '@/components/BlogSection';
+import Newsletter from '@/components/Newsletter';
 import { Truck, Car, Heart, ArrowRight, DollarSign, Percent, ShieldCheck, Star, Users, Clock } from 'lucide-react';
 import Link from 'next/link';
 

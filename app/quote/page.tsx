@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+
 import Image from 'next/image';
 import QuoteForm from '@/components/QuoteForm';
 
@@ -13,20 +13,20 @@ export default function QuotePage() {
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16 pt-10">
-                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gold-500 tracking-[0.3em] text-xs font-bold uppercase mb-4 block">
+                    <span className="text-gold-500 tracking-[0.3em] text-xs font-bold uppercase mb-4 block">
                         Instant US Rate Comparison
-                    </motion.span>
-                    <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-6xl font-serif text-white mb-6">
+                    </span>
+                    <h1 className="text-4xl md:text-6xl font-serif text-white mb-6">
                         Secure Your US Assets <br /> With Confidence
-                    </motion.h1>
+                    </h1>
                     <p className="text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
                         Fill out the request form below to compare options. Our licensed American experts will manually audit your submission to guarantee the lowest possible premium nationwide.
                     </p>
                 </div>
 
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}>
+                <div className="mt-8">
                     <QuoteForm />
-                </motion.div>
+                </div>
             </div>
         </main>
     );

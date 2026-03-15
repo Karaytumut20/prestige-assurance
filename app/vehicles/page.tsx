@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+
 import { Car, Truck, Phone, TrendingDown, CheckCircle2, FileBarChart } from 'lucide-react';
 import Image from 'next/image';
 import FAQ from '@/components/FAQ';
@@ -37,12 +37,12 @@ export default function Page() {
         <Image src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2000" fill alt="Commercial Fleet Background" className="object-cover opacity-20" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/80 to-transparent" />
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gold-500 tracking-[0.3em] text-xs font-bold uppercase mb-4 block">
+          <span className="text-gold-500 tracking-[0.3em] text-xs font-bold uppercase mb-4 block">
             National Transportation Division
-          </motion.span>
-          <motion.h1 initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="text-5xl md:text-7xl font-serif mb-6">
+          </span>
+          <h1 className="text-5xl md:text-7xl font-serif mb-6">
             US Commercial Fleet & <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-700">Luxury Auto</span>
-          </motion.h1>
+          </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
             We specialize in reducing operational insurance costs for American trucking fleets and slashing premiums for domestic luxury vehicle owners.
           </p>

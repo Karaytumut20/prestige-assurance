@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+
 import { Heart, Activity, Users, Phone, DollarSign } from 'lucide-react';
 import Image from 'next/image';
 import FAQ from '@/components/FAQ';
@@ -36,12 +36,12 @@ export default function Page() {
         <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/80 to-transparent" />
 
         <div className="container mx-auto px-6 text-center relative z-10">
-          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gold-500 tracking-[0.3em] text-xs font-bold uppercase mb-4 block">
+          <span className="text-gold-500 tracking-[0.3em] text-xs font-bold uppercase mb-4 block">
              US Affordable Care Solutions
-          </motion.span>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-5xl md:text-7xl font-serif text-white mb-6">
+          </span>
+          <h1 className="text-5xl md:text-7xl font-serif text-white mb-6">
             American Health Insurance <br/> That Fits Your Budget
-          </motion.h1>
+          </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
             Stop overpaying for US health coverage. We find the most cost-effective nationwide PPO plans for individuals, families, and businesses across the country.
           </p>

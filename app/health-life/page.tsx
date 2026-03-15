@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+
 import { Heart, Activity, Users, Stethoscope } from 'lucide-react';
 import Image from 'next/image';
 
@@ -9,7 +9,7 @@ export default function Page() {
       {/* Hero */}
       <section className="relative pt-44 pb-20 bg-white overflow-hidden">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+          <div>
              <span className="text-gold-500 tracking-[0.3em] text-xs font-bold uppercase mb-4 block">US Wellness & Legacy Programs</span>
              <h1 className="text-5xl md:text-7xl font-serif text-navy-900 mb-6 leading-tight">
                US Health & <br/> Life PPO Solutions
@@ -21,7 +21,7 @@ export default function Page() {
                <button className="bg-navy-900 text-white px-8 py-3 uppercase tracking-widest text-xs font-bold hover:bg-gold-500 hover:text-navy-900 transition-colors">Individual Plans</button>
                <button className="border border-navy-900 text-navy-900 px-8 py-3 uppercase tracking-widest text-xs font-bold hover:bg-navy-900 hover:text-white transition-colors">Group / Employee</button>
              </div>
-          </motion.div>
+          </div>
           <div className="relative h-[500px] bg-gray-100 rounded-lg overflow-hidden">
             {/* Placeholder for a lifestyle image */}
             <Image src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000" fill alt="Health & Life Lifestyle" className="object-cover" priority sizes="(max-width: 1024px) 100vw, 50vw" />

@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { ShieldCheck, ChevronRight, Phone } from 'lucide-react';
 import Link from 'next/link';
 
@@ -12,45 +10,25 @@ export default function Hero() {
       <div className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px]" />
 
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex justify-center mb-8"
-        >
+        <div className="flex justify-center mb-8">
           <span className="flex items-center space-x-3 border border-white/10 bg-white/5 px-6 py-2 rounded-full text-xs text-gold-400 uppercase tracking-[0.2em] backdrop-blur-sm">
             <ShieldCheck size={14} />
             <span>Excellence Since 1985</span>
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-[1.1]"
-        >
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-[1.1]">
           Preserving <br />
           <span className="bg-gradient-to-r from-gold-400 via-gold-500 to-amber-700 bg-clip-text text-transparent italic pr-2">
             Legacy & Wealth
           </span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed"
-        >
+        <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
           Bespoke insurance solutions curated for high-net-worth individuals and enterprises across the United States.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col md:flex-row gap-5 justify-center"
-        >
+        <div className="flex flex-col md:flex-row gap-5 justify-center">
           {/* BUTTON 1: DIRECT CALL */}
           <Link
             href="/quote"
@@ -66,7 +44,7 @@ export default function Hero() {
           >
             Explore Services <ChevronRight size={16} />
           </a>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

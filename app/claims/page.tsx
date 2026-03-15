@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+
 import { Phone, FileText, Activity, ShieldAlert } from 'lucide-react';
 
 export default function Page() {
@@ -23,7 +23,7 @@ export default function Page() {
       <section className="container mx-auto px-6 -mt-10 relative z-10">
         <div className="grid md:grid-cols-3 gap-6">
           {/* Card 1: EMERGENCY HOTLINE */}
-          <motion.div whileHover={{ y: -5 }} className="bg-white p-8 shadow-lg border-t-4 border-gold-500 text-center">
+          <div className="bg-white p-8 shadow-lg border-t-4 border-gold-500 text-center hover:-translate-y-1 transition-transform duration-300">
             <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
               <Phone size={28} />
             </div>
@@ -32,10 +32,10 @@ export default function Page() {
             <a href="tel:+16289995230" className="text-gold-600 font-bold text-lg hover:underline block">
               +1 (628) 999-5230
             </a>
-          </motion.div>
+          </div>
 
           {/* Card 2: FILE A NEW CLAIM (Updated to Call) */}
-          <motion.div whileHover={{ y: -5 }} className="bg-white p-8 shadow-lg border-t-4 border-navy-900 text-center">
+          <div className="bg-white p-8 shadow-lg border-t-4 border-navy-900 text-center hover:-translate-y-1 transition-transform duration-300">
             <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
               <FileText size={28} />
             </div>
@@ -48,10 +48,10 @@ export default function Page() {
               <Phone size={16} />
               Call to Report
             </a>
-          </motion.div>
+          </div>
 
           {/* Card 3: TRACK STATUS (Updated to Call) */}
-          <motion.div whileHover={{ y: -5 }} className="bg-white p-8 shadow-lg border-t-4 border-gray-300 text-center">
+          <div className="bg-white p-8 shadow-lg border-t-4 border-gray-300 text-center hover:-translate-y-1 transition-transform duration-300">
             <div className="w-16 h-16 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-6 text-navy-900">
               <Activity size={28} />
             </div>
@@ -64,7 +64,7 @@ export default function Page() {
               <Phone size={16} />
               Call Support
             </a>
-          </motion.div>
+          </div>
         </div>
       </section>
 
